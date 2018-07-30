@@ -16,7 +16,8 @@ public class TestDog {
                 System.out.println("Duplikat, podaj jeszcze raz nazwę i chip");
 
             } else {
-
+                dogs[i] = new Dog(scan.nextLine(), scan.nextInt());
+                scan.nextLine();
 
 
             }

@@ -15,8 +15,10 @@ public class TestDog {
             Dog nextDog = new Dog(name, chip);
             if (!contains(nextDog, dogs)) {
                 dogs[i] = nextDog;
-            } else
+            } else {
                 System.out.println("Duplikat, podaj jeszcze raz");
+                i--;
+            }
         }
         System.out.println(Arrays.toString(dogs));
     }

@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TestDog {
@@ -5,26 +6,27 @@ public class TestDog {
     public static void main(String[] args) {
         Dog[] dogs = new Dog[3];
         Scanner scan = new Scanner(System.in);
-        System.out.println("podaj nazwę i numer chip");
-        dogs[0] = new Dog(scan.nextLine(), scan.nextInt());
-        scan.nextLine();
-        for (int i = 1; i < dogs.length; i++) {
-            System.out.println("podaj nazwę i numer chip");
-            dogs[i] = new Dog(scan.nextLine(), scan.nextInt());
+        for (int i = 0; i < dogs.length; i++) {
+            System.out.println("podaj nazwę");
+            String name=scan.nextLine();
+            System.out.println("podaj chip");
+            int chip=scan.nextInt();
             scan.nextLine();
-            if (dogs[1].equals(dogs[0])||dogs[2].equals(dogs[0])||dogs[2].equals(dogs[1])) {
-                System.out.println("Duplikat, podaj jeszcze raz nazwę i chip");
-
-            } else {
-                dogs[i] = new Dog(scan.nextLine(), scan.nextInt());
-                scan.nextLine();
-
-
-            }
-
+            Dog nextDog = new Dog(name, chip);
+            if (!contains(nextDog, dogs)) {
+                dogs[i] = nextDog;
+            } else
+                System.out.println("Duplikat, podaj jeszcze raz");
         }
+        System.out.println(Arrays.toString(dogs));
+    }
 
-
+    private static boolean contains(Dog d, Dog[] dogs) {
+        for (int i = 0; i < dogs.length; i++) {
+            if (d.equals(dogs[i])) {
+                return true;
+            }
+        }
+        return false;
     }
 }
-
